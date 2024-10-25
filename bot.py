@@ -2,7 +2,7 @@ import os
 from telegram import Bot
 
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")  # Liest das Token aus den GitHub-Secrets
-CHAT_ID = "YOUR_CHAT_ID"  # Ersetze durch deine Chat-ID
+CHAT_ID = -1002399056553  # Ersetze durch deine Chat-ID
 
 bot = Bot(token=TOKEN)
 
