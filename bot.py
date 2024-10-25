@@ -1,7 +1,8 @@
+import os
 from telegram import Bot
 
-TOKEN = 8090320858:AAHVvx-MenwiG9s0XLeeBLIMfKLadgbs05A  # Ersetze durch dein Token
-CHAT_ID = libertatemmx_bot  # Ersetze durch deine Chat-ID oder Kanal-ID
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")  # Liest das Token aus den GitHub-Secrets
+CHAT_ID = "YOUR_CHAT_ID"  # Ersetze durch deine Chat-ID
 
 bot = Bot(token=TOKEN)
 
