@@ -1,29 +1,15 @@
-name: Run Telegram Bot
+import os
+from telegram import Bot
 
-on:
-  schedule:
-    - cron: '0 * * * *'  # Beispiel für jede Stunde
-  workflow_dispatch:
+# Token des Bots - stelle sicher, dass dieser in GitHub als Secret gespeichert ist
+TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")  # Token aus den GitHub-Secrets abrufen
+CHAT_ID = '-1002399056553'  # Deine Kanal-ID hier
 
-jobs:
-  run_bot:
-    runs-on: ubuntu-latest
+bot = Bot(token=TOKEN)
 
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
+def send_message():
+    message = "Dies ist eine Testnachricht von deinem Bot!"  # Beispielnachricht
+    bot.send_message(chat_id=CHAT_ID, text=message)
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-
-      - name: Install dependencies
-        run: |
-          pip install python-telegram-bot
-
-      - name: Run bot
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        run: |
-          python bot.py
+if __name__ == "__main__":
+    send_message()
