@@ -1,24 +1,28 @@
-name: Telegram Bot Scheduler
+name: Run Telegram Bot
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: '0 * * * *'  # Ändere dies, um die Ausführungszeit zu planen
+    - cron: '0 * * * *'  # Beispiel für jede Stunde
+  workflow_dispatch:
 
 jobs:
-  sendMessage:
+  run_bot:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Repository
+      - name: Check out repository
         uses: actions/checkout@v2
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
-      - name: Install Dependencies
+
+      - name: Install dependencies
         run: |
           pip install python-telegram-bot
-      - name: Run Bot
+
+      - name: Run bot
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: |
