@@ -1,0 +1,24 @@
+name: Telegram Bot Scheduler
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Ändere dies, um die Ausführungszeit zu planen
+
+jobs:
+  sendMessage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install Dependencies
+        run: |
+          pip install python-telegram-bot
+      - name: Run Bot
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          python bot.py
