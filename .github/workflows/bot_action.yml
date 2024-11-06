@@ -2,7 +2,7 @@ name: Daily Telegram Message
 
 on:
   schedule:
-    - cron: '0 9 * * *'  # Führt den Job jeden Tag um 9 Uhr UTC aus
+    - cron: '0 8 * * *'  # Führt den Job jeden Tag um 9 Uhr UTC aus
 
 jobs:
   send_message:
